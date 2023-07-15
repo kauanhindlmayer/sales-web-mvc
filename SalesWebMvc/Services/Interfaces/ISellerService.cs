@@ -8,5 +8,6 @@ namespace SalesWebMvc.Services.Interfaces
         Seller FindById(int id);
         void Insert(Seller obj);
         void Remove(int id);
+        void Update(Seller obj);
     }
 }
