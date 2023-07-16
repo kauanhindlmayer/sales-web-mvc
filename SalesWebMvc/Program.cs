@@ -14,6 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SeedingService>();
 builder.Services.AddScoped<ISellerService, SellerService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<ISalesRecordService, SalesRecordService>();
 
 var app = builder.Build();
 
@@ -29,12 +30,10 @@ app.UseRequestLocalization(localizationOptions);
 
 if (app.Environment.IsDevelopment())
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        var seedingService = services.GetRequiredService<SeedingService>();
-        seedingService.Seed();
-    }
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var seedingService = services.GetRequiredService<SeedingService>();
+    seedingService.Seed();
 }
 
 app.UseHttpsRedirection();
