@@ -4,10 +4,10 @@ namespace SalesWebMvc.Services.Interfaces
 {
     public interface ISellerService
     {
-        List<Seller> FindAll();
-        Seller FindById(int id);
-        void Insert(Seller obj);
-        void Remove(int id);
-        void Update(Seller obj);
+        Task<List<Seller>> FindAllAsync();
+        Task<Seller> FindByIdAsync(int id);
+        Task InsertAsync(Seller obj);
+        Task RemoveAsync(int id);
+        Task UpdateAsync(Seller obj);
     }
 }
